@@ -5,6 +5,7 @@ import TextArea from "./inputs/TextArea";
 
 
 export default function NoteForm({ setNotes }) {
+  const [ isFormVisible, setIsFormVisible] = useState(false)
   const [formData, setFormData] = useState({
       title: '',
       priority: 'High',
@@ -49,54 +50,63 @@ export default function NoteForm({ setNotes }) {
 
   }
 
+  const handleToggle = () => {
+    setIsFormVisible((prev) => !prev)
+  }
+
   return (
     <div>
-      <form onSubmit={handleAdd}>
-        <TextInput
-          label="Title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required={true}
-        />
-        <SelectInput
-          label="Priority"
-          name="priority"
-          value={formData.priority}
-          onChange={handleChange}
-          options={[
-            {value: 'High', label: 'High'},
-            {value: 'Medium', label: 'Medium'},
-            {value: 'Low', label: 'Low'}
-          ]}
-        />
-         <SelectInput
-          label="Category"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          options={[
-            {value: 'Work', label: 'Work'},
-            {value: 'Personal', label: 'Personal'},
-            {value: 'Ideas', label: 'Ideas'}
-          ]}
-        />
+      <button onClick={handleToggle} className="text-center bg-[#1c0333]/40 p-2 rounded-md w-full font-bold">
+        {isFormVisible ? "Hide Form" : "Add Note"}
+      </button>
+      {isFormVisible && (
+        <form onSubmit={handleAdd}>
+          <TextInput
+            label="Title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required={true}
+          />
+          <SelectInput
+            label="Priority"
+            name="priority"
+            value={formData.priority}
+            onChange={handleChange}
+            options={[
+              {value: 'High', label: 'High'},
+              {value: 'Medium', label: 'Medium'},
+              {value: 'Low', label: 'Low'}
+            ]}
+          />
+          <SelectInput
+            label="Category"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            options={[
+              {value: 'Work', label: 'Work'},
+              {value: 'Personal', label: 'Personal'},
+              {value: 'Ideas', label: 'Ideas'}
+            ]}
+          />
 
-        <TextArea 
-          labl="Description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required={true}
-        />
-         
-        <button 
-          type="submit"
-          className="w-full text-center font-bold py-2 rounded-md bg-[#1c0333] curdor-pointer hover:bg-[#1c0333]/70"
-        > 
-          Add Note
-        </button>
-      </form>
+          <TextArea 
+            labl="Description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required={true}
+          />
+          
+          <button 
+            type="submit"
+            className="w-full text-center font-bold py-2 rounded-md bg-[#1c0333] curdor-pointer hover:bg-[#1c0333]/70"
+          > 
+            Add Note
+          </button>
+        </form>
+      )}
     </div>
   )
 }

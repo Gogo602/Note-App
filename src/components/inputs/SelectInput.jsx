@@ -8,6 +8,7 @@ export default function SelectInput({label, name, value, onChange, options}) {
           </label>
           <select
             name={name}
+             id={name}
             className="px-3 py-1 w-full outline-0 border border-white rounded-md"
             value={value}
             onChange={onChange}
