@@ -9,8 +9,7 @@ export default function TextArea({label, name, value, onChange, required=false})
             {label}
           </label>
           <textarea
-            type="text"
-             id={name}
+            id={name}
             name={name}
             className="px-3 py-1 w-full outline-0 border border-white rounded-md min-h-25"
             value={value}

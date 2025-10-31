@@ -17,7 +17,7 @@ export default function App() {
   
   return (
     <section className='max-w-lg mx-auto  text-white px-2'>
-        <div className="mt-10 p-4 bg-[#3d0274] rounded-lg shadow-lg">
+        <div className="mt-10 p-4 bg-[#3d0274] rounded-lg shadow-lg mb-5">
             <h2 className="text-center text-2xl font-bold mb-4">Notes</h2>
             <div>
               <NoteForm  setNotes={setNotes}/>

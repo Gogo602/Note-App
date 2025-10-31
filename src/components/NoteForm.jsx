@@ -2,6 +2,7 @@ import { useState } from "react";
 import TextInput from "./inputs/TextInput";
 import SelectInput from "./inputs/SelectInput";
 import TextArea from "./inputs/TextArea";
+import { toast } from "react-toastify";
 
 
 export default function NoteForm({ setNotes }) {
@@ -47,7 +48,8 @@ export default function NoteForm({ setNotes }) {
       category: "Work",
       description: "",
     });
-
+    setIsFormVisible(false)
+    toast.success("Note added successfully")
   }
 
   const handleToggle = () => {
@@ -56,7 +58,7 @@ export default function NoteForm({ setNotes }) {
 
   return (
     <div>
-      <button onClick={handleToggle} className="text-center bg-[#1c0333]/40 p-2 rounded-md w-full font-bold">
+      <button onClick={handleToggle} className="text-center bg-[#1c0333]/40 p-2 rounded-md w-full font-bold transition hover:bg-[#1c0333]/20 cursor-pointer">
         {isFormVisible ? "Hide Form" : "Add Note"}
       </button>
       {isFormVisible && (
@@ -92,7 +94,7 @@ export default function NoteForm({ setNotes }) {
           />
 
           <TextArea 
-            labl="Description"
+            label="Description"
             name="description"
             value={formData.description}
             onChange={handleChange}
