@@ -13,6 +13,11 @@ export default function App() {
       console.log(error)
     }
   })
+
+  const handleDelete = (id) => {
+    setNotes(notes.filter((note) => note.id !== id))
+  }
+
   
   
   return (
@@ -21,7 +26,7 @@ export default function App() {
             <h2 className="text-center text-2xl font-bold mb-4">Notes</h2>
             <div>
               <NoteForm  setNotes={setNotes}/>
-              <Note notes={notes}/>
+              <Note notes={notes} handleDelete={handleDelete}/>
             </div>
         </div>
     </section>
