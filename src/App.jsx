@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NoteForm from "./components/NoteForm";
 import Note from './components/Note';
 
@@ -13,6 +13,10 @@ export default function App() {
       console.log(error)
     }
   })
+  
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
 
   const handleDelete = (id) => {
     setNotes(notes.filter((note) => note.id !== id))
